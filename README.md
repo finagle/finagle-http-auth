@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/finagle/finagle-http-auth.svg?branch=master)](https://travis-ci.org/finagle/finagle-http-auth)
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.finagle/finagle-http-auth_2.11.svg)](https://maven-badges.herokuapp.com/maven-central/com/github.finagle/finagle-http-auth_2.11)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.finagle/finagle-http-auth_2.11.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.finagle/finagle-http-auth_2.11)
 
 Implementing HTTP Basic Auth as a Finagle filters for both clients and servers.
 
