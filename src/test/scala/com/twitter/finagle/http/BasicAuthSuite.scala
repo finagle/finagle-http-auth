@@ -2,10 +2,10 @@ package com.twitter.finagle.http
 
 import com.twitter.finagle.Service
 import com.twitter.util.{Await, Base64StringEncoder, Future}
-import org.scalatest.FunSuite
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
-class BasicAuthSuite extends FunSuite with GeneratorDrivenPropertyChecks {
+class BasicAuthSuite extends AnyFunSuite with ScalaCheckPropertyChecks {
 
   val ok = new Service[Request, Response] {
     def apply(req: Request): Future[Response] = Future.value(Response())
