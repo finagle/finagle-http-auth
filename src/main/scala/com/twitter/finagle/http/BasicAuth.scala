@@ -8,7 +8,7 @@ object BasicAuth {
   private val WwwAuthenticate = "Basic (.*)".r
 
   private object Credentials {
-    private[this] val UsrAndPasswd = "(.*):(.*)".r
+    private[this] val UsrAndPasswd = "(?s)(.*):(.*)".r
 
     def apply(username: String, password: String): String =
       Base64StringEncoder.encode(s"$username:$password".getBytes("UTF-8"))
@@ -21,11 +21,12 @@ object BasicAuth {
   }
 
   final class Server(authenticate: (String, String) => Future[Boolean]) extends SimpleFilter[Request, Response] {
-    private[this] def authenticated(req: Request): Future[Boolean] = 
+    private[this] def authenticated(req: Request): Future[Boolean] =  {
       req.authorization match {
         case Some(BasicAuth.WwwAuthenticate(BasicAuth.Credentials(u, p))) => authenticate(u, p)
         case _ => Future.False
       }
+    }
 
     def apply(req: Request, s: Service[Request, Response]): Future[Response] =
       authenticated(req).flatMap {
